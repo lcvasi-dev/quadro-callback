@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quadro: collegamento bancario</title>
+<style>
+  body { font: 16px -apple-system, system-ui, sans-serif; max-width: 32rem; margin: 4rem auto; padding: 0 1rem; color: #222; }
+  @media (prefers-color-scheme: dark) { body { background: #1c1c1e; color: #eee; } }
+</style>
+</head>
+<body>
+<h1>Quadro</h1>
+<p id="msg">Torno a Quadro…</p>
+<p>Quadro è un'app personale per uso privato di una sola persona. I dati bancari restano sul Mac dell'utente e non vengono inviati a nessun server né condivisi con terzi. Questa pagina non salva nulla: passa il risultato dell'autorizzazione all'app e basta.</p>
+<script>
+  // Rimanda a Quadro con gli stessi parametri (code, state, error) ricevuti dalla banca.
+  var q = window.location.search;
+  window.location.replace("quadro://callback" + q);
+  setTimeout(function () {
+    document.getElementById("msg").textContent =
+      "Se Quadro non si è aperto, aprilo a mano e incolla l'indirizzo di questa pagina.";
+  }, 2500);
+</script>
+</body>
+</html>
